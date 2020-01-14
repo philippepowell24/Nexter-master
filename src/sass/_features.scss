@@ -1,0 +1,35 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+  
+  display: grid;
+  // this line is correct but does not make grid responsive
+  //grid-template-columns: repeat(3, 1fr);
+  // this makes the grid responsive when width is changed
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 6rem;
+
+  // this is to fix the alignment issue of the last two grid items, which had less text in them
+  align-items: start;
+}
+
+.feature {
+
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1.5rem;
+  grid-column-gap: 2.5rem;
+  &__icon {
+    fill: $color-primary;
+    width: 4.5rem;
+    height: 4.5rem;
+    // here -1 will not work as this only works for explicit grids. But since we are working with an implicit grid, then we need to use span 2
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}
